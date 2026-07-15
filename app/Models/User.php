@@ -63,6 +63,11 @@ class User extends Authenticatable
         return $this->hasMany(Submission::class);
     }
 
+    public function privateComments()
+    {
+        return $this->hasMany(PrivateComment::class);
+    }
+
     /** Diskusi yang dibuat user */
     public function discussions()
     {

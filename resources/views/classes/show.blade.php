@@ -247,6 +247,13 @@
             <i data-lucide="user" style="width: 16px; height: 16px;"></i>
             <span>{{ __('Dosen') }}: {{ $class->admin->name }}</span>
         </div>
+        @if($class->admin_id === $user->id)
+            <div class="meta-item" style="cursor: pointer; background-color: rgba(16, 185, 129, 0.2); border: 1px dashed rgba(255,255,255,0.4);" onclick="copyJoinLink('{{ route('classes.join.link', $class->kode_unik) }}')" title="Klik untuk menyalin link undangan">
+                <i data-lucide="link" style="width: 16px; height: 16px;"></i>
+                <span>{{ __('Kode:') }} {{ $class->kode_unik }}</span>
+                <i data-lucide="copy" style="width: 14px; height: 14px; margin-left: 0.25rem; opacity: 0.8;"></i>
+            </div>
+        @endif
         @if($class->ruangan)
             <div class="meta-item">
                 <i data-lucide="map-pin" style="width: 16px; height: 16px;"></i>
@@ -883,5 +890,14 @@
             e.target.classList.remove('active');
         }
     });
+
+    function copyJoinLink(url) {
+        navigator.clipboard.writeText(url).then(() => {
+            alert('Link undangan berhasil disalin!\n' + url);
+        }).catch(err => {
+            console.error('Gagal menyalin text: ', err);
+            prompt("Gagal menyalin otomatis. Silakan copy link berikut secara manual:", url);
+        });
+    }
 </script>
 @endsection

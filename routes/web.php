@@ -52,6 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/classes/{class}', [ClassController::class, 'show'])->name('classes.show');
     Route::put('/classes/{class}', [ClassController::class, 'update'])->name('classes.update');
     Route::post('/classes/join', [ClassController::class, 'join'])->name('classes.join');
+    Route::get('/join/{kode}', [ClassController::class, 'joinLink'])->name('classes.join.link');
     Route::post('/classes/{class}/leave', [ClassController::class, 'leave'])->name('classes.leave');
     Route::delete('/classes/{class}', [ClassController::class, 'destroy'])->name('classes.destroy');
     Route::post('/classes/{class}/add-admin', [ClassController::class, 'addAdmin'])->name('classes.add-admin');
@@ -66,6 +67,7 @@ Route::middleware('auth')->group(function () {
     // Submissions Routes
     Route::post('/tasks/{task}/submit', [SubmissionController::class, 'submit'])->name('submissions.submit');
     Route::post('/submissions/{submission}/grade', [SubmissionController::class, 'grade'])->name('submissions.grade');
+    Route::post('/submissions/{submission}/comments', [\App\Http\Controllers\PrivateCommentController::class, 'store'])->name('submissions.comments.store');
 
     // Schedules Routes
     Route::post('/classes/{class}/schedules', [ScheduleController::class, 'store'])->name('schedules.store');

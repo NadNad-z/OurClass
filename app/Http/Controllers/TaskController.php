@@ -110,7 +110,7 @@ class TaskController extends Controller
         if ($user->isClassAdmin($class)) {
             // Jika Dosen: load semua submissions
             $submissions = Submission::where('task_id', $task->id)
-                ->with('user')
+                ->with(['user', 'privateComments.user'])
                 ->orderBy('submitted_at', 'desc')
                 ->get();
 
@@ -119,6 +119,7 @@ class TaskController extends Controller
             // Jika Mahasiswa: load submission sendiri
             $submission = Submission::where('task_id', $task->id)
                 ->where('user_id', $user->id)
+                ->with('privateComments.user')
                 ->first();
 
             return view('tasks.show', compact('task', 'submission', 'user', 'class', 'taskDiscussions'));

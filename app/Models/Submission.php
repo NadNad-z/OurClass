@@ -36,6 +36,11 @@ class Submission extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function privateComments()
+    {
+        return $this->hasMany(PrivateComment::class)->orderBy('created_at', 'asc');
+    }
+
     // === Helper Methods ===
 
     public function isGraded(): bool

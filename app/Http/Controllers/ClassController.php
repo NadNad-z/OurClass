@@ -193,7 +193,41 @@ class ClassController extends Controller
             ->with('success', 'Berhasil bergabung dengan kelas "'.$class->nama_kelas.'"!');
     }
 
-    /** Keluar dari kelas */
+    /** Proses Mahasiswa Bergabung ke Kelas via Link Undangan */
+    public function joinLink($kode)
+    {
+        $class = ClassModel::where('kode_unik', $kode)->first();
+
+        if (! $class) {
+            return redirect()->route('classes.index')->with('error', 'Link undangan tidak valid atau kelas tidak ditemukan.');
+        }
+
+        $user = Auth::user();
+
+        // Cek jika user sudah menjadi member atau admin
+        if ($class->members()->where('user_id', $user->id)->exists() || $class->admin_id === $user->id) {
+            return redirect()->route('classes.show', $class->id)
+                ->with('info', 'Anda sudah berada di dalam kelas ini.');
+        }
+
+        // Tambahkan ke pivot table
+        $class->members()->attach($user->id, ['role' => 'mahasiswa']);
+
+        // Buat notifikasi
+        Notification::create([
+            'user_id' => $user->id,
+            'class_id' => $class->id,
+            'judul' => 'Berhasil Bergabung',
+            'pesan' => 'Anda telah berhasil bergabung ke kelas '.$class->nama_kelas,
+            'tipe' => 'sistem',
+            'link' => route('classes.show', $class->id),
+        ]);
+
+        return redirect()->route('classes.show', $class->id)
+            ->with('success', 'Berhasil bergabung dengan kelas via link undangan!');
+    }
+
+    /** Proses Keluar dari Kelas (Leave) */
     public function leave(ClassModel $class, Request $request)
     {
         $user = Auth::user();

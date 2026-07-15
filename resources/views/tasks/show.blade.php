@@ -291,6 +291,16 @@
                                     <a href="{{ asset('storage/' . $sub->file) }}" target="_blank" class="action-btn" title="Unduh File Jawaban" style="width: 36px; height: 36px;">
                                         <i data-lucide="file-down"></i>
                                     </a>
+
+                                    <!-- Private Comment Action -->
+                                    <button onclick="openModal('chatModal{{ $sub->id }}')" class="action-btn" title="Chat Pribadi" style="width: 36px; height: 36px; position: relative;">
+                                        <i data-lucide="message-square"></i>
+                                        @if($sub->privateComments->count() > 0)
+                                            <span style="position: absolute; top: -2px; right: -2px; background-color: var(--primary); color: white; border-radius: 50%; width: 16px; height: 16px; font-size: 0.6rem; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                                                {{ $sub->privateComments->count() }}
+                                            </span>
+                                        @endif
+                                    </button>
                                     
                                     <!-- Grade Display / Action -->
                                     @if($sub->isGraded())
@@ -306,6 +316,48 @@
                                 </div>
                             </div>
                         @endforeach
+                    </div>
+                    
+                    <!-- Lecturer Chat Modals -->
+                    @foreach($submissions as $sub)
+                        <div class="modal-overlay" id="chatModal{{ $sub->id }}">
+                            <div class="modal-container">
+                                <div class="modal-header">
+                                    <h3 style="font-size: 1.15rem; font-weight: 700;">Chat Pribadi: {{ $sub->user->name }}</h3>
+                                    <button class="modal-close" onclick="closeModal('chatModal{{ $sub->id }}')">
+                                        <i data-lucide="x" style="width: 20px; height: 20px;"></i>
+                                    </button>
+                                </div>
+                                <div style="padding: 1.5rem;">
+                                    <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; max-height: 400px; overflow-y: auto; padding-right: 0.5rem;">
+                                        @forelse($sub->privateComments as $comment)
+                                            <div style="background-color: {{ $comment->user_id === $user->id ? 'var(--primary-soft)' : 'var(--bg-app)' }}; padding: 0.85rem 1rem; border-radius: var(--border-radius-md); {{ $comment->user_id === $user->id ? 'border: 1px solid var(--primary); align-self: flex-end; width: 85%;' : 'border: 1px solid var(--border-color); align-self: flex-start; width: 85%;' }}">
+                                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                                    <strong style="font-size: 0.85rem; color: var(--text-main);">{{ $comment->user->name }}</strong>
+                                                    <span style="font-size: 0.75rem; color: var(--text-muted);">{{ $comment->created_at->format('d M H:i') }}</span>
+                                                </div>
+                                                <p style="font-size: 0.9rem; color: var(--text-main); margin: 0; line-height: 1.5;">
+                                                    {{ $comment->komentar }}
+                                                </p>
+                                            </div>
+                                        @empty
+                                            <div style="text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: 1rem 0;">
+                                                Belum ada percakapan.
+                                            </div>
+                                        @endforelse
+                                    </div>
+
+                                    <form action="{{ route('submissions.comments.store', $sub->id) }}" method="POST" style="display: flex; gap: 0.5rem;">
+                                        @csrf
+                                        <input type="text" name="komentar" class="form-control" placeholder="Tulis balasan..." required style="flex-grow: 1;">
+                                        <button type="submit" class="btn btn-primary" style="width: auto; padding: 0.5rem 1rem;">
+                                            <i data-lucide="send" style="width: 16px; height: 16px;"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                     </div>
                 @endif
             </div>
@@ -394,6 +446,42 @@
                             <span>{{ $submission ? __('Kirim Ulang Jawaban (Revisi)') : __('Kumpulkan Jawaban') }}</span>
                         </button>
                     </form>
+                @endif
+                
+                <!-- Private Comments Section (Student) -->
+                @if($submission)
+                <div style="margin-top: 2rem; border-top: 1px dashed var(--border-color); padding-top: 1.5rem;">
+                    <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <i data-lucide="message-square" style="width: 18px; height: 18px; color: var(--primary);"></i>
+                        {{ __('Komentar Pribadi dengan Dosen') }}
+                    </h3>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; max-height: 300px; overflow-y: auto; padding-right: 0.5rem;">
+                        @forelse($submission->privateComments as $comment)
+                            <div style="background-color: {{ $comment->user_id === $user->id ? 'var(--primary-soft)' : 'var(--bg-app)' }}; padding: 0.85rem 1rem; border-radius: var(--border-radius-md); {{ $comment->user_id === $user->id ? 'border: 1px solid var(--primary); align-self: flex-end; width: 85%;' : 'border: 1px solid var(--border-color); align-self: flex-start; width: 85%;' }}">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                    <strong style="font-size: 0.85rem; color: var(--text-main);">{{ $comment->user->name }}</strong>
+                                    <span style="font-size: 0.75rem; color: var(--text-muted);">{{ $comment->created_at->format('d M H:i') }}</span>
+                                </div>
+                                <p style="font-size: 0.9rem; color: var(--text-main); margin: 0; line-height: 1.5;">
+                                    {{ $comment->komentar }}
+                                </p>
+                            </div>
+                        @empty
+                            <div style="text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: 1rem 0;">
+                                Belum ada komentar pribadi.
+                            </div>
+                        @endforelse
+                    </div>
+
+                    <form action="{{ route('submissions.comments.store', $submission->id) }}" method="POST" style="display: flex; gap: 0.5rem;">
+                        @csrf
+                        <input type="text" name="komentar" class="form-control" placeholder="Tulis pesan pribadi..." required style="flex-grow: 1;">
+                        <button type="submit" class="btn btn-primary" style="width: auto; padding: 0.5rem 1rem;">
+                            <i data-lucide="send" style="width: 16px; height: 16px;"></i>
+                        </button>
+                    </form>
+                </div>
                 @endif
             </div>
         @endif
