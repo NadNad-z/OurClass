@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, intl, bcmath, xml, sqlite, pdo, pdo_sqlite, curl
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Get Composer Cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.composer/cache
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist
+
+      - name: Create SQLite database file
+        run: php -r "file_exists('database/database.sqlite') || touch('database/database.sqlite');"
+
+      - name: Copy example env
+        run: cp .env.example .env
+
+      - name: Generate app key
+        run: php artisan key:generate --ansi
+
+      - name: Run migrations and seed
+        run: php artisan migrate --seed --force
+
+      - name: Run Feature tests
+        run: php artisan test --testsuite=Feature

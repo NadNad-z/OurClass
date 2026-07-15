@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  app:
+    image: php:8.3-fpm
+    container_name: ourclass_app
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+      - ./storage:/var/www/html/storage
+    depends_on:
+      - db
+    networks:
+      - ourclass_network
+    environment:
+      PHP_MEMORY_LIMIT: 512M
+      COMPOSER_ALLOW_SUPERUSER: 1
+    command: bash -lc "composer install && php-fpm"
+
+  web:
+    image: nginx:stable-alpine
+    container_name: ourclass_web
+    ports:
+      - '8000:80'
+    volumes:
+      - ./:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - ourclass_network
+
+  db:
+    image: mysql:8.0
+    container_name: ourclass_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ourclass
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - '3307:3306'
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - ourclass_network
+
+networks:
+  ourclass_network:
+    driver: bridge
+
+volumes:
+  db_data:
