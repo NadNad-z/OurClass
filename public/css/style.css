@@ -68,6 +68,11 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
     font-family: var(--font-sans);
     background-color: var(--bg-app);
@@ -489,7 +494,8 @@ select.form-control {
 /* --- Dashboard / App Layout --- */
 .app-container {
     display: flex;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .sidebar-overlay {
@@ -700,7 +706,8 @@ select.form-control {
     flex: 1;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100vh;
 }
 
 .main-header {
@@ -712,6 +719,16 @@ select.form-control {
     justify-content: space-between;
     padding: 0 2rem;
     transition: background-color var(--transition-normal);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(12px);
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    min-height: calc(100vh - 70px);
 }
 
 .header-search {
