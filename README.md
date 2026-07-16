@@ -5,7 +5,7 @@
 # OurClass 
 ## Platform Manajemen Kelas Digital
 
-OurClass adalah aplikasi web kelas digital interaktif yang dirancang untuk membantu mahasiswa dan dosen/pengajar dalam mengelola administrasi kelas, melacak tugas, mengelola jadwal, serta menyediakan laporan otomatis secara efisien dan terintegrasi.
+OurClass adalah aplikasi web kelas digital interaktif yang dirancang untuk membantu siswa/mahasiswa dan guru/dosen dalam mengelola administrasi kelas, melacak tugas, mengelola jadwal, serta menyediakan laporan otomatis secara efisien dan terintegrasi.
 
 Aplikasi ini sudah dideploy secara live dan dapat diakses di:
  **[ourclass-production.up.railway.app](https://ourclass-production.up.railway.app)**
@@ -14,17 +14,19 @@ Aplikasi ini sudah dideploy secara live dan dapat diakses di:
 
 ## 1. Fitur Utama
 
-1. **Autentikasi & Multi-Role**: Sistem pendaftaran dan masuk (Login/Register) terpisah untuk peran **Dosen (Pengajar)** dan **Mahasiswa (Pelajar)**.
+1. **Autentikasi & Multi-Role**: Sistem pendaftaran dan masuk (Login/Register) terpisah untuk peran **Guru/Dosen (Pengajar)** dan **Siswa/Mahasiswa (Pelajar)**.
 2. **Dashboard Interaktif**: Halaman utama yang menampilkan ringkasan kelas, jadwal terdekat, tugas aktif, dan notifikasi terbaru.
 3. **Manajemen Kelas**:
-   - Dosen dapat membuat kelas baru dan membagikan kode kelas unik.
-   - Mahasiswa dapat bergabung dengan memasukkan kode unik kelas.
+   - Guru/Dosen dapat membuat kelas baru dan membagikan kode kelas unik.
+   - Siswa/Mahasiswa dapat bergabung dengan memasukkan kode unik kelas.
 4. **Manajemen Tugas (CRUD)**: 
-   - Dosen dapat mengunggah tugas dengan tenggat waktu.
-   - Mahasiswa dapat melihat daftar tugas dan tenggat waktunya.
+   - Guru/Dosen dapat mengunggah tugas dengan tenggat waktu.
+   - Siswa/Mahasiswa dapat melihat daftar tugas dan tenggat waktunya.
 5. **Manajemen Agenda**: Menampilkan jadwal kuliah, pertemuan kelas, atau batas waktu tugas dalam format daftar terstruktur.
 6. **Kustomisasi Tema**: Mendukung *Dark Mode* dan *Light Mode* yang cepat dan responsif.
 7. **Responsif & Mobile-Ready**: Antarmuka dioptimalkan agar ramah digunakan di browser smartphone (HP) maupun layar desktop/laptop.
+8. **Bahasa**: Bisa memilih untuk menggunakan bahasa Indonesia atau Bahasa Inggris
+9. 
 
 ---
 
