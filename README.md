@@ -1,59 +1,79 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# OurClass — Platform Manajemen Kelas Digital
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+OurClass adalah aplikasi web kelas digital interaktif yang dirancang untuk membantu mahasiswa dan dosen/pengajar dalam mengelola administrasi kelas, melacak tugas, mengelola jadwal, serta menyediakan laporan otomatis secara efisien dan terintegrasi.
 
-## About Laravel
+Aplikasi ini sudah dideploy secara live dan dapat diakses di:
+👉 **[ourclass-production.up.railway.app](https://ourclass-production.up.railway.app)**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 1. Fitur Utama
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. **Autentikasi & Multi-Role**: Sistem pendaftaran dan masuk (Login/Register) terpisah untuk peran **Dosen (Pengajar)** dan **Mahasiswa (Pelajar)**.
+2. **Dashboard Interaktif**: Halaman utama yang menampilkan ringkasan kelas, jadwal terdekat, tugas aktif, dan notifikasi terbaru.
+3. **Manajemen Kelas**:
+   - Dosen dapat membuat kelas baru dan membagikan kode kelas unik.
+   - Mahasiswa dapat bergabung dengan memasukkan kode unik kelas.
+4. **Manajemen Tugas (CRUD)**: 
+   - Dosen dapat mengunggah tugas dengan tenggat waktu.
+   - Mahasiswa dapat melihat daftar tugas dan tenggat waktunya.
+5. **Manajemen Agenda**: Menampilkan jadwal kuliah, pertemuan kelas, atau batas waktu tugas dalam format daftar terstruktur.
+6. **Kustomisasi Tema**: Mendukung *Dark Mode* dan *Light Mode* yang cepat dan responsif.
+7. **Responsif & Mobile-Ready**: Antarmuka dioptimalkan agar ramah digunakan di browser smartphone (HP) maupun layar desktop/laptop.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 2. Teknologi yang Digunakan (Tech Stack)
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Backend**: PHP 8.4 (Framework Laravel 11)
+- **Frontend**: Blade Templating Engine, HTML5, Vanilla CSS (Custom Design System, Glassmorphism), JavaScript
+- **Database**: MySQL 8
+- **Pustaka Ikon**: Lucide Icons
+- **Deployment Platform**: Railway
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+---
 
-## Agentic Development
+## 3. Struktur Database Utama
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+1. **`users`**: Menyimpan data akun pengguna (nama, email, password terenkripsi Bcrypt, peran/role, nomor WhatsApp, NIM/NIP).
+2. **`classes`**: Menyimpan data kelas yang dibuat oleh Dosen (nama kelas, deskripsi, kode kelas unik, ID pembuat).
+3. **`assignments`**: Menyimpan data tugas yang ditambahkan di setiap kelas (judul tugas, deskripsi, batas waktu/due date).
+4. **`class_user`**: Tabel pivot relasi many-to-many untuk mencatat mahasiswa yang bergabung ke dalam kelas.
 
-```bash
-composer require laravel/boost --dev
+---
 
-php artisan boost:install
-```
+## 4. Pengembangan Lokal (Local Development)
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Jika ingin menjalankan proyek ini secara lokal menggunakan Laragon atau PHP Development Server:
 
-## Contributing
+1. **Clone Repositori**:
+   ```bash
+   git clone https://github.com/NadNad-z/OurClass.git
+   cd OurClass
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2. **Instal Dependensi**:
+   ```bash
+   composer install
+   ```
 
-## Code of Conduct
+3. **Atur Environment**:
+   Salin `.env.example` menjadi `.env` lalu sesuaikan kredensial databasemu:
+   ```bash
+   cp .env.example .env
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. **Generate Key & Migrasi Database**:
+   ```bash
+   php artisan key:generate
+   php artisan migrate --seed
+   ```
 
-## Security Vulnerabilities
+5. **Jalankan Aplikasi**:
+   ```bash
+   php artisan serve
+   ```
+   Buka `http://127.0.0.1:8000` di browsermu.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# OurClass
+---
+*Proyek ini diajukan untuk memenuhi Ujian Akhir Semester (UAS) mata kuliah Pemrograman Web 2.*
