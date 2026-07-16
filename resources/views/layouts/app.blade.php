@@ -21,7 +21,7 @@
     
     @yield('styles')
 </head>
-<body>
+<body class="preload-transitions">
 
     <div class="app-container">
         <!-- Sidebar Overlay (Mobile) -->
@@ -170,6 +170,13 @@
 
     <!-- Theme & Icon Scripts -->
     <script>
+        // Prevent transitions on page load (Fix mobile sidebar animation glitch)
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => {
+                document.body.classList.remove("preload-transitions");
+            }, 100);
+        });
+
         // Init Lucide Icons
         lucide.createIcons();
 
