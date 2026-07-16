@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="public/images/logo_baru.jpeg" alt="OurClass Logo" width="200">
+  <img src="public/images/logo_baru.jpeg" alt="OurClass Logo" width="180">
 </p>
 
 # OurClass 
-# Platform Manajemen Kelas Digital
+## Platform Manajemen Kelas Digital
 
 OurClass adalah aplikasi web kelas digital interaktif yang dirancang untuk membantu mahasiswa dan dosen/pengajar dalam mengelola administrasi kelas, melacak tugas, mengelola jadwal, serta menyediakan laporan otomatis secara efisien dan terintegrasi.
 
