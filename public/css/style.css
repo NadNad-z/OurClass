@@ -266,9 +266,15 @@ body {
 .auth-form-side {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 4rem 3rem;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 3rem;
     overflow-y: auto;
+}
+
+.auth-form-side .auth-form-card {
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 @media (max-width: 480px) {
