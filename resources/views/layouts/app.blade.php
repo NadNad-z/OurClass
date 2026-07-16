@@ -30,7 +30,7 @@
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-brand">
-                <img src="{{ asset('images/logo.png') }}" alt="OurClass Logo">
+                <img src="{{ asset('images/logo_baru.jpeg') }}" alt="OurClass Logo">
                 <span>OurClass</span>
             </div>
             
