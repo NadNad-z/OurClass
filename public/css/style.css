@@ -181,6 +181,13 @@ body {
     .auth-banner-side {
         display: none;
     }
+    .auth-form-side {
+        overflow-y: visible;
+        height: auto;
+        min-height: 100vh;
+        justify-content: flex-start;
+        padding: 2rem 1.5rem 3rem;
+    }
 }
 
 .auth-banner-side {
