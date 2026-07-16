@@ -86,7 +86,7 @@ body {
     background-color: var(--bg-app);
     color: var(--text-main);
     line-height: 1.5;
-    transition: background-color var(--transition-normal), color var(--transition-normal);
+    line-height: 1.5;
 }
 
 /* Custom Scrollbar */
@@ -750,7 +750,6 @@ select.form-control {
     align-items: center;
     justify-content: space-between;
     padding: 0 2rem;
-    transition: background-color var(--transition-normal);
     position: sticky;
     top: 0;
     z-index: 50;
@@ -963,7 +962,7 @@ select.form-control {
     border-radius: var(--border-radius-md);
     padding: 1.5rem;
     box-shadow: var(--shadow-sm);
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-normal);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .card-hover:hover {
