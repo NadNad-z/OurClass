@@ -135,12 +135,3 @@ php artisan project:restore backup_20260703_120000.zip --disk=s3
 
 Restore akan mengekstrak konten ke folder `storage/app/backups/restore_<timestamp>/` sehingga Anda dapat memeriksa file JSON dan memulihkan data secara manual.
 
----
-
-Jika kamu mau, saya bisa:
-
-- Membuat skeleton fitur (route, controller, migration) untuk fitur prioritas.
-- Meninjau dependensi dan konfigurasi di repo.
-- Menambahkan halaman splash dan layout Blade dasar.
-
-Beritahu pilihanmu, saya lanjutkan langkah berikutnya.
