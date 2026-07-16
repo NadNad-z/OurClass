@@ -164,15 +164,19 @@ body {
 
 /* --- Auth Pages Layout (Login/Register) --- */
 .auth-wrapper {
-    min-height: 100vh;
+    height: 100vh;
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     background-color: var(--bg-app);
+    overflow: hidden;
 }
 
 @media (max-width: 968px) {
     .auth-wrapper {
         grid-template-columns: 1fr;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
     }
     .auth-banner-side {
         display: none;
