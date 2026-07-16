@@ -99,7 +99,7 @@
     /* Default Avatars Grid CSS */
     .default-avatars-grid {
         display: grid;
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         gap: 0.6rem;
         justify-content: center;
         max-width: 340px;
@@ -250,19 +250,10 @@
                     <label class="form-label" style="text-align: center; display: block; margin-bottom: 0.75rem;">{{ __('Atau Pilih Avatar Bawaan') }}</label>
                     <div class="default-avatars-grid">
                         @php
-                            $defaults = [
-                                'https://api.dicebear.com/7.x/adventurer/svg?seed=Felix',
-                                'https://api.dicebear.com/7.x/adventurer/svg?seed=Aneka',
-                                'https://api.dicebear.com/7.x/adventurer/svg?seed=Jack',
-                                'https://api.dicebear.com/7.x/adventurer/svg?seed=Luna',
-                                'https://api.dicebear.com/7.x/adventurer/svg?seed=Oliver',
-                                'https://api.dicebear.com/7.x/adventurer/svg?seed=Zoe',
-                                // Tambahan 4 avatar baru
-                                'https://api.dicebear.com/9.x/avataaars/svg?seed=Aisyah&top=hijab', // Cewek berkerudung
-                                'https://api.dicebear.com/9.x/avataaars/svg?seed=Fadil&top=turban', // Cowo berpeci
-                                'https://api.dicebear.com/9.x/micah/svg?seed=Anak', // Anak-anak
-                                'https://api.dicebear.com/9.x/personas/svg?seed=Kakek' // Orang tua
-                            ];
+                            $defaults = [];
+                            for ($i = 1; $i <= 10; $i++) {
+                                $defaults[] = asset('images/avatars/' . $i . '.jpeg');
+                            }
                         @endphp
                         @foreach($defaults as $index => $avatarUrl)
                             <div class="default-avatar-item {{ $user->avatar === $avatarUrl ? 'active' : '' }}" data-avatar-url="{{ $avatarUrl }}">
