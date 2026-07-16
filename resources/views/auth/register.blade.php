@@ -14,7 +14,7 @@
         <!-- Banner Side -->
         <div class="auth-banner-side">
             <div class="banner-logo">
-                <img src="{{ asset('images/logo_baru.png') }}" alt="Logo">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo">
                 <span>OurClass</span>
             </div>
             

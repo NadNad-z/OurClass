@@ -12,7 +12,7 @@
 
     <div class="splash-container">
         <div class="splash-logo-wrapper">
-            <img src="{{ asset('images/logo_baru.png') }}" class="splash-logo" alt="OurClass Logo">
+            <img src="{{ asset('images/logo.png') }}" class="splash-logo" alt="OurClass Logo">
             <h1 class="splash-title">OurClass</h1>
             <span class="splash-loader"></span>
         </div>
