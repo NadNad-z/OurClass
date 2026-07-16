@@ -2,12 +2,13 @@
   <img src="public/images/logo_baru.jpeg" alt="OurClass Logo" width="200">
 </p>
 
-# OurClass — Platform Manajemen Kelas Digital
+# OurClass 
+# Platform Manajemen Kelas Digital
 
 OurClass adalah aplikasi web kelas digital interaktif yang dirancang untuk membantu mahasiswa dan dosen/pengajar dalam mengelola administrasi kelas, melacak tugas, mengelola jadwal, serta menyediakan laporan otomatis secara efisien dan terintegrasi.
 
 Aplikasi ini sudah dideploy secara live dan dapat diakses di:
-👉 **[ourclass-production.up.railway.app](https://ourclass-production.up.railway.app)**
+ **[ourclass-production.up.railway.app](https://ourclass-production.up.railway.app)**
 
 ---
 
