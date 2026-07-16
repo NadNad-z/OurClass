@@ -188,6 +188,12 @@ body {
         justify-content: flex-start;
         padding: 2rem 1.5rem 3rem;
     }
+    /* Override global overflow:hidden on auth pages for mobile */
+    body:has(.auth-wrapper),
+    html:has(.auth-wrapper) {
+        overflow: auto;
+        height: auto;
+    }
 }
 
 .auth-banner-side {
