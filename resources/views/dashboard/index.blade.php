@@ -224,11 +224,11 @@
             </h3>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem;">
-                <a href="{{ route('classes.index') }}" class="btn btn-primary" style="background-color: var(--primary-soft); color: #047857; padding: 0.75rem 0.5rem; flex-direction: column; font-size: 0.85rem; border: 1px solid rgba(16,185,129,0.1); border-radius: var(--border-radius-md); box-shadow: none;">
+                <a href="{{ route('classes.index') }}" class="btn" style="background-color: var(--primary-soft); color: #047857; padding: 0.75rem 0.5rem; flex-direction: column; font-size: 0.85rem; border: 1px solid rgba(16,185,129,0.15); border-radius: var(--border-radius-md); box-shadow: none; text-decoration: none;">
                     <i data-lucide="book-open" style="width: 20px; height: 20px;"></i>
                     <span style="margin-top: 0.25rem;">{{ __('Kelas Saya') }}</span>
                 </a>
-                <a href="{{ route('analytics.index') }}" class="btn btn-primary" style="background-color: rgba(79, 70, 229, 0.08); color: #4338ca; padding: 0.75rem 0.5rem; flex-direction: column; font-size: 0.85rem; border: 1px solid rgba(79,70,229,0.1); border-radius: var(--border-radius-md); box-shadow: none;">
+                <a href="{{ route('analytics.index') }}" class="btn" style="background-color: rgba(79, 70, 229, 0.08); color: #4338ca; padding: 0.75rem 0.5rem; flex-direction: column; font-size: 0.85rem; border: 1px solid rgba(79,70,229,0.15); border-radius: var(--border-radius-md); box-shadow: none; text-decoration: none;">
                     <i data-lucide="bar-chart-3" style="width: 20px; height: 20px;"></i>
                     <span style="margin-top: 0.25rem;">{{ __('Analisis Beban') }}</span>
                 </a>
