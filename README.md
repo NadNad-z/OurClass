@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/images/logo_baru.jpeg" alt="OurClass Logo" width="200">
+  <img src="public/images/logo_baru.png" alt="OurClass Logo" width="200">
 </p>
 
 # OurClass — Platform Manajemen Kelas Digital
