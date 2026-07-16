@@ -2,6 +2,27 @@
 
 @section('title', 'Dashboard')
 
+@section('styles')
+<style>
+    .shortcut-green {
+        background-color: var(--primary-soft);
+        color: #047857;
+        border: 1px solid rgba(16,185,129,0.15);
+    }
+    .shortcut-purple {
+        background-color: rgba(79, 70, 229, 0.08);
+        color: #4338ca;
+        border: 1px solid rgba(79,70,229,0.15);
+    }
+    [data-theme="dark"] .shortcut-green {
+        color: #6ee7b7;
+    }
+    [data-theme="dark"] .shortcut-purple {
+        color: #a5b4fc;
+    }
+</style>
+@endsection
+
 @section('content')
 <div style="margin-bottom: 2rem;">
     <h1 style="font-weight: 800; font-size: 2.2rem; letter-spacing: -0.02em; margin-bottom: 0.25rem;">
@@ -224,11 +245,11 @@
             </h3>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem;">
-                <a href="{{ route('classes.index') }}" class="btn" style="background-color: var(--primary-soft); color: #047857; padding: 0.75rem 0.5rem; flex-direction: column; font-size: 0.85rem; border: 1px solid rgba(16,185,129,0.15); border-radius: var(--border-radius-md); box-shadow: none; text-decoration: none;">
+                <a href="{{ route('classes.index') }}" class="btn shortcut-green" style="padding: 0.75rem 0.5rem; flex-direction: column; font-size: 0.85rem; border-radius: var(--border-radius-md); box-shadow: none; text-decoration: none;">
                     <i data-lucide="book-open" style="width: 20px; height: 20px;"></i>
                     <span style="margin-top: 0.25rem;">{{ __('Kelas Saya') }}</span>
                 </a>
-                <a href="{{ route('analytics.index') }}" class="btn" style="background-color: rgba(79, 70, 229, 0.08); color: #4338ca; padding: 0.75rem 0.5rem; flex-direction: column; font-size: 0.85rem; border: 1px solid rgba(79,70,229,0.15); border-radius: var(--border-radius-md); box-shadow: none; text-decoration: none;">
+                <a href="{{ route('analytics.index') }}" class="btn shortcut-purple" style="padding: 0.75rem 0.5rem; flex-direction: column; font-size: 0.85rem; border-radius: var(--border-radius-md); box-shadow: none; text-decoration: none;">
                     <i data-lucide="bar-chart-3" style="width: 20px; height: 20px;"></i>
                     <span style="margin-top: 0.25rem;">{{ __('Analisis Beban') }}</span>
                 </a>
