@@ -25,8 +25,8 @@ Aplikasi ini sudah dideploy secara live dan dapat diakses di:
 5. **Manajemen Agenda**: Menampilkan jadwal kuliah, pertemuan kelas, atau batas waktu tugas dalam format daftar terstruktur.
 6. **Kustomisasi Tema**: Mendukung *Dark Mode* dan *Light Mode* yang cepat dan responsif.
 7. **Responsif & Mobile-Ready**: Antarmuka dioptimalkan agar ramah digunakan di browser smartphone (HP) maupun layar desktop/laptop.
-8. **Bahasa**: Bisa memilih untuk menggunakan bahasa Indonesia atau Bahasa Inggris
-9. 
+8. **Multi-Bahasa**: Aplikasi mendukung penggunaan dua bahasa, yaitu Bahasa Indonesia dan Bahasa Inggris, yang dapat disesuaikan oleh pengguna.
+
 
 ---
 
