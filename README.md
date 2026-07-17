@@ -14,18 +14,19 @@ Aplikasi ini sudah dideploy secara live dan dapat diakses di:
 
 ## 1. Fitur Utama
 
-1. **Autentikasi & Multi-Role**: Sistem pendaftaran dan masuk (Login/Register) terpisah untuk peran **Guru/Dosen (Pengajar)** dan **Siswa/Mahasiswa (Pelajar)**.
+1. **Autentikasi & Profil (Role-Based)**: Sistem pendaftaran dan masuk (Login/Register) terpisah untuk peran **Guru/Dosen (Pengajar)** dan **Siswa/Mahasiswa (Pelajar)**.
 2. **Dashboard Interaktif**: Halaman utama yang menampilkan ringkasan kelas, jadwal terdekat, tugas aktif, dan notifikasi terbaru.
 3. **Manajemen Kelas**:
-   - Guru/Dosen dapat membuat kelas baru dan membagikan kode kelas unik.
+   - Guru/Dosen dapat membuat kelas dengan visibilitas publik/privat.
    - Siswa/Mahasiswa dapat bergabung dengan memasukkan kode unik kelas.
-4. **Manajemen Tugas (CRUD)**: 
-   - Guru/Dosen dapat mengunggah tugas dengan tenggat waktu.
-   - Siswa/Mahasiswa dapat melihat daftar tugas dan tenggat waktunya.
-5. **Manajemen Agenda**: Menampilkan jadwal kuliah, pertemuan kelas, atau batas waktu tugas dalam format daftar terstruktur.
-6. **Kustomisasi Tema**: Mendukung *Dark Mode* dan *Light Mode* yang cepat dan responsif.
-7. **Responsif & Mobile-Ready**: Antarmuka dioptimalkan agar ramah digunakan di browser smartphone (HP) maupun layar desktop/laptop.
-8. **Multi-Bahasa**: Aplikasi mendukung penggunaan dua bahasa, yaitu Bahasa Indonesia dan Bahasa Inggris, yang dapat disesuaikan oleh pengguna.
+4. **Manajemen Tugas & File Soal**: 
+   - Guru/Dosen dapat membuat tugas dengan lampiran file soal dan tenggat waktu (*deadline*).
+   - Siswa/Mahasiswa dapat melihat daftar tugas dan mengumpulkan (submit) jawaban secara langsung.
+5. **Manajemen Agenda**: Menampilkan jadwal kuliah, pertemuan kelas, dan batas waktu tugas dalam format terpusat agar tidak ada yang terlewat.
+6. **Manajemen Penyimpanan & Keamanan**: Terdapat pembatasan ukuran unggahan file (maks 10MB), validasi format (.pdf, .docx, dll), enkripsi Bcrypt, dan proteksi CSRF demi efisiensi *server* dan perlindungan data.
+7. **Ruang Diskusi & Notifikasi**: Pusat komunikasi di dalam kelas serta pengingat pembaruan agar informasi penting tidak tenggelam.
+8. **Kustomisasi Tema & UI Responsif**: Mendukung *Dark Mode* dan *Light Mode*, serta tampilan *Mobile-Ready* yang dioptimalkan untuk layar ponsel maupun laptop.
+9. **Dukungan Multi-Bahasa (Opsional)**: Tersedia antarmuka dalam pilihan Bahasa Indonesia dan Bahasa Inggris.
 
 
 ---
