@@ -299,7 +299,7 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label" for="nim_nip">{{ $user->role === 'dosen' ? __('NIP') : __('NIM') }}</label>
+                <label class="form-label" for="nim_nip">{{ in_array($user->role, ['dosen', 'guru']) ? __('NIP') : ($user->role === 'siswa' ? __('NIS') : __('NIM')) }}</label>
                 <div class="input-wrapper">
                     <i data-lucide="key-round"></i>
                     <input type="text" id="nim_nip" class="form-control readonly-field" value="{{ $user->nim_nip ?? '-' }}" readonly>

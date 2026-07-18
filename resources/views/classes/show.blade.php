@@ -245,7 +245,7 @@
     <div class="banner-meta">
         <div class="meta-item">
             <i data-lucide="user" style="width: 16px; height: 16px;"></i>
-            <span>{{ __('Dosen') }}: {{ $class->admin->name }}</span>
+            <span>{{ $class->admin->role_label }}: {{ $class->admin->name }}</span>
         </div>
         @if($class->admin_id === $user->id)
             <div class="meta-item" style="cursor: pointer; background-color: rgba(16, 185, 129, 0.2); border: 1px dashed rgba(255,255,255,0.4);" onclick="copyJoinLink('{{ route('classes.join.link', $class->kode_unik) }}')" title="Klik untuk menyalin link undangan">

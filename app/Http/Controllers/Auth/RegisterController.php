@@ -29,7 +29,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role' => ['required', 'in:dosen,mahasiswa,siswa'],
+            'role' => ['required', 'in:dosen,guru,mahasiswa,siswa'],
             'nim_nip' => ['nullable', 'string', 'max:50'],
             'phone' => ['nullable', 'string', 'max:20'],
         ], [

@@ -103,7 +103,7 @@
                     <img src="{{ Auth::user()->avatar_url }}" class="user-avatar" alt="Avatar">
                     <div class="user-info">
                         <div class="user-name">{{ Auth::user()->name }}</div>
-                        <div class="user-role">{{ Auth::user()->role }}</div>
+                        <div class="user-role">{{ Auth::user()->role_label }}</div>
                     </div>
                 </div>
             </div>

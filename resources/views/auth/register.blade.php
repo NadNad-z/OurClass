@@ -74,7 +74,8 @@
                                 <select name="role" id="role" class="form-control" required onchange="handleRoleChange()">
                                     <option value="mahasiswa" {{ old('role') === 'mahasiswa' ? 'selected' : '' }}>Mahasiswa</option>
                                     <option value="siswa" {{ old('role') === 'siswa' ? 'selected' : '' }}>Siswa</option>
-                                    <option value="dosen" {{ old('role') === 'dosen' ? 'selected' : '' }}>Dosen / Guru</option>
+                                    <option value="dosen" {{ old('role') === 'dosen' ? 'selected' : '' }}>Dosen</option>
+                                    <option value="guru" {{ old('role') === 'guru' ? 'selected' : '' }}>Guru</option>
                                 </select>
                             </div>
                             @error('role')
@@ -155,6 +156,9 @@
             
             if (roleSelect.value === 'dosen') {
                 labelId.textContent = 'NIP / NIDN';
+                inputId.placeholder = '19880703...';
+            } else if (roleSelect.value === 'guru') {
+                labelId.textContent = 'NIP / NUPTK';
                 inputId.placeholder = '19880703...';
             } else if (roleSelect.value === 'siswa') {
                 labelId.textContent = 'NIS';

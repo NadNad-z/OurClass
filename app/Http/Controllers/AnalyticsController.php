@@ -16,7 +16,7 @@ class AnalyticsController extends Controller
 
         // Ambil daftar kelas user
         $classes = $user->classes()->get();
-        if ($user->role === 'dosen') {
+        if (in_array($user->role, ['dosen', 'guru'])) {
             $ownedClasses = $user->ownedClasses()->get();
             $classes = $classes->merge($ownedClasses)->unique('id');
         }

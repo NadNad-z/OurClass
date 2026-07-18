@@ -104,9 +104,44 @@ class User extends Authenticatable
         return $this->role === 'dosen';
     }
 
+    public function isGuru(): bool
+    {
+        return $this->role === 'guru';
+    }
+
     public function isMahasiswa(): bool
     {
         return $this->role === 'mahasiswa';
+    }
+
+    public function isSiswa(): bool
+    {
+        return $this->role === 'siswa';
+    }
+
+    /** Cek apakah user adalah pengajar (dosen/guru) */
+    public function isTeacher(): bool
+    {
+        return in_array($this->role, ['dosen', 'guru', 'admin']);
+    }
+
+    /** Cek apakah user adalah pelajar (mahasiswa/siswa) */
+    public function isStudent(): bool
+    {
+        return in_array($this->role, ['mahasiswa', 'siswa']);
+    }
+
+    /** Label role yang tampil di UI */
+    public function getRoleLabelAttribute(): string
+    {
+        return match($this->role) {
+            'admin' => 'Admin',
+            'dosen' => 'Dosen',
+            'guru' => 'Guru',
+            'mahasiswa' => 'Mahasiswa',
+            'siswa' => 'Siswa',
+            default => ucfirst($this->role),
+        };
     }
 
     /** Mendapatkan URL Avatar (Lokal atau Default) */

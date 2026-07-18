@@ -112,7 +112,7 @@
                     <i data-lucide="book-copy" style="width: 48px; height: 48px; color: var(--text-muted); margin-bottom: 1rem;"></i>
                     <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">{{ __('Belum Ada Kelas') }}</h4>
                     <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 320px; margin: 0 auto;">
-                        @if($user->role === 'dosen')
+                        @if(in_array($user->role, ['dosen', 'guru']))
                             {{ __('Anda belum membuat kelas apapun. Klik Kelola Kelas untuk memulai.') }}
                         @else
                             {{ __('Anda belum bergabung dalam kelas apapun. Masukkan kode kelas dari dosen Anda.') }}

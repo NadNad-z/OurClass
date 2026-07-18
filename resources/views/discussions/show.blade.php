@@ -46,7 +46,7 @@
                 <div>
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
                         <h4 style="font-weight: 800; font-size: 1rem; color: var(--text-main);">{{ $discussion->user->name }}</h4>
-                        <span style="background-color: {{ $discussion->user->role === 'dosen' ? 'var(--class-color)' : 'var(--bg-app)' }}; color: {{ $discussion->user->role === 'dosen' ? 'var(--text-white)' : 'var(--text-muted)' }}; font-size: 0.7rem; font-weight: 700; padding: 0.1rem 0.4rem; border-radius: var(--border-radius-sm); text-transform: capitalize; border: 1px solid var(--border-color);">
+                        <span style="background-color: {{ in_array($discussion->user->role, ['dosen', 'guru']) ? 'var(--class-color)' : 'var(--bg-app)' }}; color: {{ in_array($discussion->user->role, ['dosen', 'guru']) ? 'var(--text-white)' : 'var(--text-muted)' }}; font-size: 0.7rem; font-weight: 700; padding: 0.1rem 0.4rem; border-radius: var(--border-radius-sm); text-transform: capitalize; border: 1px solid var(--border-color);">
                             {{ $discussion->user->role }}
                         </span>
                     </div>
@@ -84,7 +84,7 @@
         @else
             <div style="display: flex; flex-direction: column; gap: 1rem;">
                 @foreach($discussion->replies as $reply)
-                    @php $isDosenReply = $reply->user->role === 'dosen'; @endphp
+                    @php $isDosenReply = in_array($reply->user->role, ['dosen', 'guru']); @endphp
                     <div class="card reply-card {{ $isDosenReply ? 'dosen-reply' : '' }}">
                         <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
                             <img src="{{ $reply->user->avatar_url }}" style="width: 32px; height: 32px; border-radius: 50%; background-color: var(--primary-soft);" alt="Avatar">
