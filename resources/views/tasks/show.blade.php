@@ -267,7 +267,7 @@
                         @foreach($submissions as $sub)
                             <div class="submission-item" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
                                 <div style="display: flex; align-items: center; gap: 1rem;">
-                                    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed={{ urlencode($sub->user->name) }}" style="width: 40px; height: 40px; border-radius: 50%; background-color: var(--primary-soft);" alt="Avatar">
+                                    <img src="{{ $sub->user->avatar_url }}" style="width: 40px; height: 40px; border-radius: 50%; background-color: var(--primary-soft);" alt="Avatar">
                                     <div>
                                         <h4 style="font-weight: 700; font-size: 0.95rem;">{{ $sub->user->name }}</h4>
                                         <div style="font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 0.5rem; align-items: center; margin-top: 0.15rem;">
@@ -573,7 +573,7 @@
                         <!-- Question Header -->
                         <div style="padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-color);">
                             <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <img src="https://api.dicebear.com/7.x/adventurer/svg?seed={{ urlencode($qa->user->name) }}"
+                                <img src="{{ $qa->user->avatar_url }}"
                                      style="width: 36px; height: 36px; border-radius: 50%; background-color: var(--primary-soft); flex-shrink: 0;" alt="Avatar">
                                 <div style="flex: 1; min-width: 0;">
                                     <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.3rem;">
@@ -599,7 +599,7 @@
                                 @foreach($qa->replies as $reply)
                                     @php $isAdmin = $reply->user->id === $class->admin_id; @endphp
                                     <div style="display: flex; gap: 0.75rem; padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--border-color); {{ $isAdmin ? 'background: linear-gradient(135deg, rgba(16,185,129,0.04), rgba(79,70,229,0.04));' : '' }}">
-                                        <img src="https://api.dicebear.com/7.x/adventurer/svg?seed={{ urlencode($reply->user->name) }}"
+                                        <img src="{{ $reply->user->avatar_url }}"
                                              style="width: 28px; height: 28px; border-radius: 50%; background-color: var(--primary-soft); flex-shrink: 0;" alt="Avatar">
                                         <div style="flex: 1; min-width: 0;">
                                             <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.2rem;">
@@ -621,7 +621,7 @@
                             <form action="{{ route('discussions.reply', $qa->id) }}" method="POST" 
                                   style="display: flex; gap: 0.5rem; align-items: flex-start;">
                                 @csrf
-                                <img src="https://api.dicebear.com/7.x/adventurer/svg?seed={{ urlencode($user->name) }}"
+                                <img src="{{ $user->avatar_url }}"
                                      style="width: 28px; height: 28px; border-radius: 50%; background-color: var(--primary-soft); flex-shrink: 0;" alt="Avatar">
                                 <input type="text" name="konten" 
                                        placeholder="{{ __('Tulis balasan...') }}" required

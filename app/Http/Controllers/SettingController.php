@@ -91,6 +91,35 @@ class SettingController extends Controller
         return back()->with('success', 'Password Anda berhasil diperbarui!');
     }
 
+    /** Menghapus akun pengguna */
+    public function deleteAccount(Request $request)
+    {
+        $request->validate([
+            'password' => 'required',
+        ], [
+            'password.required' => 'Password wajib diisi untuk konfirmasi penghapusan akun.',
+        ]);
+
+        $user = Auth::user();
+
+        if (!Hash::check($request->password, $user->password)) {
+            return back()->withErrors(['password' => 'Password yang Anda masukkan salah.']);
+        }
+
+        // Hapus avatar jika ada dan berupa file lokal
+        if ($user->avatar && !\Illuminate\Support\Str::startsWith($user->avatar, 'http') && Storage::disk('public')->exists($user->avatar)) {
+            Storage::disk('public')->delete($user->avatar);
+        }
+
+        Auth::logout();
+        $user->delete();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('success', 'Akun Anda telah berhasil dihapus.');
+    }
+
     /** Sync theme mode with database */
     public function updateTheme(Request $request)
     {

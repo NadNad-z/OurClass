@@ -100,7 +100,7 @@
             
             <div class="sidebar-footer">
                 <div class="user-profile-badge">
-                    <img src="{{ Auth::user()->avatar ? (Str::startsWith(Auth::user()->avatar, 'http') ? Auth::user()->avatar : asset('storage/' . Auth::user()->avatar)) : 'https://api.dicebear.com/7.x/adventurer/svg?seed=' . urlencode(Auth::user()->name) }}" class="user-avatar" alt="Avatar">
+                    <img src="{{ Auth::user()->avatar_url }}" class="user-avatar" alt="Avatar">
                     <div class="user-info">
                         <div class="user-name">{{ Auth::user()->name }}</div>
                         <div class="user-role">{{ Auth::user()->role }}</div>

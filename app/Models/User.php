@@ -109,6 +109,19 @@ class User extends Authenticatable
         return $this->role === 'mahasiswa';
     }
 
+    /** Mendapatkan URL Avatar (Lokal atau Default) */
+    public function getAvatarUrlAttribute()
+    {
+        if ($this->avatar) {
+            if (\Illuminate\Support\Str::startsWith($this->avatar, 'http')) {
+                return $this->avatar;
+            }
+            return asset('storage/' . $this->avatar);
+        }
+        
+        return 'https://api.dicebear.com/7.x/adventurer/svg?seed=' . urlencode($this->name);
+    }
+
     /** Cek apakah user adalah admin dari kelas tertentu */
     public function isClassAdmin(ClassModel $class): bool
     {

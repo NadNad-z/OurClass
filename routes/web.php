@@ -93,6 +93,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::post('/settings/profile', [SettingController::class, 'updateProfile'])->name('settings.profile');
     Route::post('/settings/password', [SettingController::class, 'updatePassword'])->name('settings.password');
+    Route::delete('/settings/account', [SettingController::class, 'deleteAccount'])->name('settings.delete');
 
     // Theme sync (AJAX)
     Route::post('/api/theme-update', [SettingController::class, 'updateTheme'])->name('theme.update');

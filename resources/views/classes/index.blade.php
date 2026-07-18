@@ -230,7 +230,7 @@
                 <div style="margin-top: 1.5rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 0.75rem;">
                     <!-- Teacher Info -->
                     <div style="display: flex; align-items: center; gap: 0.5rem; overflow: hidden;" onclick="event.stopPropagation();">
-                        <img src="https://api.dicebear.com/7.x/adventurer/svg?seed={{ urlencode($class->admin->name) }}" style="width: 28px; height: 28px; border-radius: 50%; background-color: var(--primary-soft);" alt="Dosen">
+                        <img src="{{ $class->admin->avatar_url }}" style="width: 28px; height: 28px; border-radius: 50%; background-color: var(--primary-soft);" alt="Dosen">
                         <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 130px;" title="{{ $class->admin->name }}">
                             {{ $class->admin->name }}
                         </span>

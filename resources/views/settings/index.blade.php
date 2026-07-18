@@ -230,7 +230,7 @@
             
             <div class="avatar-upload-container">
                 <div class="avatar-preview-wrapper">
-                    <img src="{{ $user->avatar ? (Str::startsWith($user->avatar, 'http') ? $user->avatar : asset('storage/' . $user->avatar)) : 'https://api.dicebear.com/7.x/adventurer/svg?seed=' . urlencode($user->name) }}" class="avatar-preview" id="avatar-preview-img" alt="Avatar">
+                    <img src="{{ $user->avatar_url }}" class="avatar-preview" id="avatar-preview-img" alt="Avatar">
                     <div class="avatar-view-overlay" id="avatar-view-trigger">
                         <i data-lucide="maximize-2" style="width: 18px; height: 18px; margin-bottom: 4px;"></i>
                         <span>{{ __('Lihat') }}</span>
@@ -363,6 +363,36 @@
                 {{ __('Perbarui Password') }}
             </button>
         </form>
+
+        <!-- Hapus Akun Section (Danger Zone) -->
+        <div class="card settings-card" style="border: 1px solid var(--danger); background-color: rgba(239, 68, 68, 0.05); margin-top: 2rem;">
+            <div class="settings-header">
+                <div class="settings-icon-wrapper" style="background-color: rgba(239, 68, 68, 0.1); color: var(--danger);">
+                    <i data-lucide="trash-2"></i>
+                </div>
+                <div>
+                    <h2 class="settings-title" style="color: var(--danger);">{{ __('Hapus Akun') }}</h2>
+                    <p class="settings-subtitle">{{ __('Tindakan ini tidak dapat dibatalkan. Semua data Anda akan dihapus secara permanen.') }}</p>
+                </div>
+            </div>
+
+            <form action="{{ route('settings.delete') }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus akun ini secara permanen?');">
+                @csrf
+                @method('DELETE')
+                
+                <div class="form-group">
+                    <label for="delete_password" class="form-label">{{ __('Konfirmasi Password') }}</label>
+                    <input type="password" id="delete_password" name="password" class="form-input" required placeholder="{{ __('Masukkan password untuk konfirmasi') }}">
+                </div>
+
+                <div class="form-actions" style="margin-top: 1.5rem; justify-content: flex-start;">
+                    <button type="submit" class="btn btn-danger" style="background-color: var(--danger); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: var(--border-radius-md); font-weight: 600; cursor: pointer; transition: background-color 0.2s;">
+                        <i data-lucide="alert-triangle" style="width: 16px; height: 16px; margin-right: 0.5rem; display: inline-block; vertical-align: middle;"></i>
+                        {{ __('Ya, Hapus Akun Saya') }}
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

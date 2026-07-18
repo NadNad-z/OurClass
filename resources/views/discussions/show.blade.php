@@ -42,7 +42,7 @@
     <div class="card discussion-card">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
             <div style="display: flex; align-items: center; gap: 0.75rem;">
-                <img src="https://api.dicebear.com/7.x/adventurer/svg?seed={{ urlencode($discussion->user->name) }}" style="width: 44px; height: 44px; border-radius: 50%; background-color: var(--primary-soft);" alt="Avatar">
+                <img src="{{ $discussion->user->avatar_url }}" style="width: 44px; height: 44px; border-radius: 50%; background-color: var(--primary-soft);" alt="Avatar">
                 <div>
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
                         <h4 style="font-weight: 800; font-size: 1rem; color: var(--text-main);">{{ $discussion->user->name }}</h4>
@@ -87,7 +87,7 @@
                     @php $isDosenReply = $reply->user->role === 'dosen'; @endphp
                     <div class="card reply-card {{ $isDosenReply ? 'dosen-reply' : '' }}">
                         <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
-                            <img src="https://api.dicebear.com/7.x/adventurer/svg?seed={{ urlencode($reply->user->name) }}" style="width: 32px; height: 32px; border-radius: 50%; background-color: var(--primary-soft);" alt="Avatar">
+                            <img src="{{ $reply->user->avatar_url }}" style="width: 32px; height: 32px; border-radius: 50%; background-color: var(--primary-soft);" alt="Avatar">
                             <div>
                                 <div style="display: flex; align-items: center; gap: 0.5rem;">
                                     <h5 style="font-weight: 700; font-size: 0.9rem;">{{ $reply->user->name }}</h5>

@@ -314,7 +314,7 @@
                 <div class="card">
                     <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 1rem;">Pengampu Utama</h3>
                     <div style="display: flex; align-items: center; gap: 1rem;">
-                        <img src="https://api.dicebear.com/7.x/adventurer/svg?seed={{ urlencode($class->admin->name) }}" style="width: 50px; height: 50px; border-radius: 50%; background-color: var(--primary-soft);" alt="Avatar">
+                        <img src="{{ $class->admin->avatar_url }}" style="width: 50px; height: 50px; border-radius: 50%; background-color: var(--primary-soft);" alt="Avatar">
                         <div>
                             <h4 style="font-weight: 700; font-size: 0.95rem;">{{ $class->admin->name }}</h4>
                             <p style="font-size: 0.75rem; color: var(--text-muted);">{{ $class->admin->email }}</p>
@@ -493,7 +493,7 @@
                         <div style="border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--border-radius-md); background-color: var(--bg-app); display: flex; flex-direction: column; gap: 0.5rem;">
                             <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                                 <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed={{ urlencode($disc->user->name) }}" style="width: 24px; height: 24px; border-radius: 50%; background-color: var(--primary-soft);" alt="User">
+                                    <img src="{{ $disc->user->avatar_url }}" style="width: 24px; height: 24px; border-radius: 50%; background-color: var(--primary-soft);" alt="User">
                                     <span style="font-size: 0.8rem; font-weight: 700;">{{ $disc->user->name }}</span>
                                     <span style="font-size: 0.75rem; color: var(--text-muted);">{{ $disc->created_at->diffForHumans() }}</span>
                                 </div>
@@ -531,7 +531,7 @@
                     <!-- Admin / Lecturer -->
                     <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color);">
                         <div style="display: flex; align-items: center; gap: 1rem;">
-                            <img src="https://api.dicebear.com/7.x/adventurer/svg?seed={{ urlencode($class->admin->name) }}" style="width: 36px; height: 36px; border-radius: 50%; background-color: var(--primary-soft);" alt="Avatar">
+                            <img src="{{ $class->admin->avatar_url }}" style="width: 36px; height: 36px; border-radius: 50%; background-color: var(--primary-soft);" alt="Avatar">
                             <div>
                                 <h4 style="font-weight: 700; font-size: 0.95rem;">{{ $class->admin->name }}</h4>
                                 <p style="font-size: 0.75rem; color: var(--text-muted);">{{ $class->admin->email }}</p>
@@ -547,7 +547,7 @@
                         @if($member->id !== $class->admin_id)
                             <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color);">
                                 <div style="display: flex; align-items: center; gap: 1rem;">
-                                    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed={{ urlencode($member->name) }}" style="width: 36px; height: 36px; border-radius: 50%; background-color: var(--primary-soft);" alt="Avatar">
+                                    <img src="{{ $member->avatar_url }}" style="width: 36px; height: 36px; border-radius: 50%; background-color: var(--primary-soft);" alt="Avatar">
                                     <div>
                                         <h4 style="font-weight: 700; font-size: 0.95rem;">{{ $member->name }}</h4>
                                         <p style="font-size: 0.75rem; color: var(--text-muted);">
