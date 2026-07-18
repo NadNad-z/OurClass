@@ -50,6 +50,7 @@ class RegisterController extends Controller
             'nim_nip' => $request->nim_nip,
             'phone' => $request->phone,
             'theme_mode' => 'light',
+            'avatar' => asset('images/avatars/' . rand(1, 12) . '.jpeg'),
         ]);
 
         // Log activity
