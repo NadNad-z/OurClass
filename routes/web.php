@@ -52,7 +52,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/classes/{class}', [ClassController::class, 'show'])->name('classes.show');
     Route::put('/classes/{class}', [ClassController::class, 'update'])->name('classes.update');
     Route::post('/classes/join', [ClassController::class, 'join'])->name('classes.join');
-    Route::get('/join/{kode}', [ClassController::class, 'joinLink'])->name('classes.join.link');
     Route::post('/classes/{class}/leave', [ClassController::class, 'leave'])->name('classes.leave');
     Route::delete('/classes/{class}', [ClassController::class, 'destroy'])->name('classes.destroy');
     Route::post('/classes/{class}/add-admin', [ClassController::class, 'addAdmin'])->name('classes.add-admin');
@@ -98,3 +97,6 @@ Route::middleware('auth')->group(function () {
     // Theme sync (AJAX)
     Route::post('/api/theme-update', [SettingController::class, 'updateTheme'])->name('theme.update');
 });
+
+// Join via link (accessible before login, redirects to login first if needed)
+Route::get('/join/{kode}', [ClassController::class, 'joinLink'])->name('classes.join.link');

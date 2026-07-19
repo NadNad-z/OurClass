@@ -199,7 +199,17 @@ class ClassController extends Controller
         $class = ClassModel::where('kode_unik', $kode)->first();
 
         if (! $class) {
+            // Jika belum login, redirect ke login dulu
+            if (! Auth::check()) {
+                return redirect()->route('login')->with('info', 'Silakan login terlebih dahulu untuk bergabung ke kelas.');
+            }
             return redirect()->route('classes.index')->with('error', 'Link undangan tidak valid atau kelas tidak ditemukan.');
+        }
+
+        // Jika belum login, simpan URL tujuan & arahkan ke login
+        if (! Auth::check()) {
+            session(['url.intended' => url()->current()]);
+            return redirect()->route('login')->with('info', 'Silakan login terlebih dahulu untuk bergabung ke kelas.');
         }
 
         $user = Auth::user();
@@ -210,8 +220,8 @@ class ClassController extends Controller
                 ->with('info', 'Anda sudah berada di dalam kelas ini.');
         }
 
-        // Tambahkan ke pivot table
-        $class->members()->attach($user->id, ['role' => 'mahasiswa']);
+        // Tambahkan ke pivot table dengan role 'member'
+        $class->members()->attach($user->id, ['role' => 'member']);
 
         // Buat notifikasi
         Notification::create([
@@ -226,6 +236,7 @@ class ClassController extends Controller
         return redirect()->route('classes.show', $class->id)
             ->with('success', 'Berhasil bergabung dengan kelas via link undangan!');
     }
+
 
     /** Proses Keluar dari Kelas (Leave) */
     public function leave(ClassModel $class, Request $request)
